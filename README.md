@@ -10,10 +10,5 @@ Este repositório contém os projetos e atividades desenvolvidos durante meus es
 
 Se quiser trocar ideias ou tirar dúvidas, você pode me encontrar aqui:
 
-- **Nome**: Kauan
-- **E-mail**: seu-email@exemplo.com
-- **LinkedIn**: [Seu Perfil](https://www.linkedin.com/in/seu-perfil/)
-
----
-
-Essa versão é mais focada no seu estudo de Java e nas ferramentas e frameworks que você está utilizando no momento!
+- **E-mail**: kauanalmeidalima1405@gmail.com
+- **LinkedIn**: [Kauan Lima](https://www.linkedin.com/in/kauan-de-almeida-lima/)
