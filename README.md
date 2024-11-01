@@ -4,7 +4,8 @@ Este repositório contém os projetos e atividades desenvolvidos durante meus es
 
 ## Formações Concluídas
 
-1. **Aprenda a programar em Java com Orientação a Objetos**
+1. **A partir do zero: iniciante em programação**
+2. **Aprenda a programar em Java com Orientação a Objetos**
 
 ## Contato
 
