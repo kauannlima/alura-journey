@@ -13,6 +13,7 @@ function adicionar(){
     listaDeAmigos.innerHTML = amigos.join(", ");
 
     console.log(amigos)
+    amigoAdicionado.value =''
 }
 
 function sortear(){
@@ -40,4 +41,9 @@ function embaralha(lista){
 
         [lista[indice -1], lista[indiceAleatorio]] = [lista[indiceAleatorio], lista[indice -1]];
     }
+}
+
+function reiniciar(){
+    listaSorteio.innerHTML = ""; 
+    listaDeAmigos.innerHTML = '';
 }
