@@ -1,4 +1,4 @@
-package br.com.alura.screenmatch.hora_da_pratica_2;
+package br.com.alura.screenmatch.hora_da_pratica.hdp2;
 
 public class Produto {
     private String nome;

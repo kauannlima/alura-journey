@@ -1,4 +1,4 @@
-package br.com.alura.screenmatch.hora_da_pratica_1;
+package br.com.alura.screenmatch.hora_da_pratica.hdp1;
 
 public class Calculadora {
 
