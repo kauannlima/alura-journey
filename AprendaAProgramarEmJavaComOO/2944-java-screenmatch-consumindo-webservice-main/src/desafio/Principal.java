@@ -19,7 +19,7 @@ public class Principal {
         Scanner leitura = new Scanner(System.in);
         Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).setPrettyPrinting().create();
         System.out.println("Informe um CEP para buscar na API: ");
-        String cepBusca = leitura.nextLine();
+        String cepBusca = leitura.nextLine().replace("-","").replace(" ", "");
         URI endereco = URI.create("https://viacep.com.br/ws/" + cepBusca + "/json/");
 
         String json = "";
@@ -42,6 +42,7 @@ public class Principal {
         FileWriter escrita = new FileWriter("endereco.json");
         escrita.write(json);
         escrita.close();
+        System.out.println(json);
         System.out.println("O programa finalizou corretamente!");
     }
 }
