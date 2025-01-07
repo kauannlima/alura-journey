@@ -1,11 +1,16 @@
 package br.com.alura.screenmatch.model;
 
+<<<<<<< HEAD:CrieAplicaçõesUsandoSpringBoot/3355-java-screenmatch-com-jpa-aula05/src/main/java/br/com/alura/screenmatch/model/Episodio.java
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+=======
+import jakarta.persistence.*;
+import org.hibernate.annotations.ManyToAny;
+>>>>>>> 3b28c85f64fe0cdb29ea9745d3e336879f05fc86:CrieAplicaçõesUsandoSpringBoot/3355-java-screenmatch-com-jpa-main/src/main/java/br/com/alura/screenmatch/model/Episodio.java
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
@@ -17,6 +22,10 @@ public class Episodio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+<<<<<<< HEAD:CrieAplicaçõesUsandoSpringBoot/3355-java-screenmatch-com-jpa-aula05/src/main/java/br/com/alura/screenmatch/model/Episodio.java
+=======
+
+>>>>>>> 3b28c85f64fe0cdb29ea9745d3e336879f05fc86:CrieAplicaçõesUsandoSpringBoot/3355-java-screenmatch-com-jpa-main/src/main/java/br/com/alura/screenmatch/model/Episodio.java
     private Integer temporada;
     private String titulo;
     private Integer numeroEpisodio;
@@ -26,6 +35,12 @@ public class Episodio {
     private Serie serie;
 
     public Episodio(){}
+
+    @ManyToOne
+    private Serie serie;
+
+    public Episodio() {
+    }
 
     public Episodio(Integer numeroTemporada, DadosEpisodio dadosEpisodio) {
         this.temporada = numeroTemporada;
