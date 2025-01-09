@@ -1,10 +1,7 @@
 package br.com.alura.screenmatch.model;
 
-<<<<<<< HEAD:CrieAplicaçõesUsandoSpringBoot/3355-java-screenmatch-com-jpa-aula05/src/main/java/br/com/alura/screenmatch/model/Serie.java
 import br.com.alura.screenmatch.service.ConsultaChatGPT;
-=======
 import br.com.alura.screenmatch.service.traducao.ConsultaMyMemory;
->>>>>>> 3b28c85f64fe0cdb29ea9745d3e336879f05fc86:CrieAplicaçõesUsandoSpringBoot/3355-java-screenmatch-com-jpa-main/src/main/java/br/com/alura/screenmatch/model/Serie.java
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -14,26 +11,12 @@ import java.util.OptionalDouble;
 @Entity
 @Table(name = "series")
 public class Serie {
-<<<<<<< HEAD:CrieAplicaçõesUsandoSpringBoot/3355-java-screenmatch-com-jpa-aula05/src/main/java/br/com/alura/screenmatch/model/Serie.java
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-=======
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(unique = true)
->>>>>>> 3b28c85f64fe0cdb29ea9745d3e336879f05fc86:CrieAplicaçõesUsandoSpringBoot/3355-java-screenmatch-com-jpa-main/src/main/java/br/com/alura/screenmatch/model/Serie.java
     private String titulo;
-
     private Integer totalTemporadas;
     private Double avaliacao;
-<<<<<<< HEAD:CrieAplicaçõesUsandoSpringBoot/3355-java-screenmatch-com-jpa-aula05/src/main/java/br/com/alura/screenmatch/model/Serie.java
-=======
-
->>>>>>> 3b28c85f64fe0cdb29ea9745d3e336879f05fc86:CrieAplicaçõesUsandoSpringBoot/3355-java-screenmatch-com-jpa-main/src/main/java/br/com/alura/screenmatch/model/Serie.java
     @Enumerated(EnumType.STRING)
     private Categoria genero;
     private String atores;
@@ -43,12 +26,7 @@ public class Serie {
     @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Episodio> episodios = new ArrayList<>();
 
-<<<<<<< HEAD:CrieAplicaçõesUsandoSpringBoot/3355-java-screenmatch-com-jpa-aula05/src/main/java/br/com/alura/screenmatch/model/Serie.java
     public Serie() {}
-=======
-    public Serie() {
-    }
->>>>>>> 3b28c85f64fe0cdb29ea9745d3e336879f05fc86:CrieAplicaçõesUsandoSpringBoot/3355-java-screenmatch-com-jpa-main/src/main/java/br/com/alura/screenmatch/model/Serie.java
 
     public Serie(DadosSerie dadosSerie){
         this.titulo = dadosSerie.titulo();
@@ -57,7 +35,7 @@ public class Serie {
         this.genero = Categoria.fromString(dadosSerie.genero().split(",")[0].trim());
         this.atores = dadosSerie.atores();
         this.poster = dadosSerie.poster();
-        this.sinopse = ConsultaChatGPT.obterTraducao(dadosSerie.sinopse()).trim();
+        this.sinopse = ConsultaMyMemory.obterTraducao(dadosSerie.sinopse()).trim();
     }
 
     public Long getId() {
@@ -75,14 +53,6 @@ public class Serie {
     public void setEpisodios(List<Episodio> episodios) {
         episodios.forEach(e -> e.setSerie(this));
         this.episodios = episodios;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getTitulo() {
@@ -141,18 +111,8 @@ public class Serie {
         this.sinopse = sinopse;
     }
 
-    public List<Episodio> getEpisodios() {
-        return episodios;
-    }
-
-    public void setEpisodios(List<Episodio> episodios) {
-        episodios.forEach(e -> e.setSerie(this));
-        this.episodios = episodios;
-    }
-
     @Override
     public String toString() {
-<<<<<<< HEAD:CrieAplicaçõesUsandoSpringBoot/3355-java-screenmatch-com-jpa-aula05/src/main/java/br/com/alura/screenmatch/model/Serie.java
         return
                 "genero=" + genero +
                         ", titulo='" + titulo + '\'' +
@@ -162,15 +122,5 @@ public class Serie {
                         ", poster='" + poster + '\'' +
                         ", sinopse='" + sinopse + '\'' +
                         ", episodios='" + episodios + '\'';
-=======
-        return  "genero=" + genero +
-                ", titulo='" + titulo +
-                ", totalTemporadas=" + totalTemporadas +
-                ", avaliacao=" + avaliacao +
-                ", atores='" + atores +
-                ", poster='" + poster +
-                ", sinopse='" + sinopse +
-                ", episodios='" + episodios;
->>>>>>> 3b28c85f64fe0cdb29ea9745d3e336879f05fc86:CrieAplicaçõesUsandoSpringBoot/3355-java-screenmatch-com-jpa-main/src/main/java/br/com/alura/screenmatch/model/Serie.java
     }
 }
