@@ -23,7 +23,7 @@ public class ContaService {
 
     public Set<Conta> listarContasAbertas() {
         Connection conn = connection.recuperaConexao();
-        return new ContaDAO(conn).lista();
+        return new ContaDAO(conn).listar();
     }
 
     public BigDecimal consultarSaldo(Integer numeroDaConta) {
@@ -46,8 +46,9 @@ public class ContaService {
         if (valor.compareTo(conta.getSaldo()) > 0) {
             throw new RegraDeNegocioException("Saldo insuficiente!");
         }
-
-        conta.sacar(valor);
+        Connection conn =  connection.recuperaConexao();
+        var valorAtualizado = conta.getSaldo().subtract(valor);
+        new ContaDAO(conn).alterar(conta.getNumero(), valorAtualizado);
     }
 
     public void realizarDeposito(Integer numeroDaConta, BigDecimal valor) {
@@ -55,8 +56,14 @@ public class ContaService {
         if (valor.compareTo(BigDecimal.ZERO) <= 0) {
             throw new RegraDeNegocioException("Valor do deposito deve ser superior a zero!");
         }
+      Connection conn =  connection.recuperaConexao();
+        var valorAtualizado = conta.getSaldo().add(valor);
+        new ContaDAO(conn).alterar(conta.getNumero(), valorAtualizado);
+    }
 
-        conta.depositar(valor);
+    public void realizarTransferencia(Integer numeroDaContaOrigem, Integer numeroDaContaDestino,BigDecimal valor){
+        this.realizarSaque(numeroDaContaOrigem, valor);
+        this.realizarDeposito(numeroDaContaDestino, valor);
     }
 
     public void encerrar(Integer numeroDaConta) {
@@ -69,10 +76,12 @@ public class ContaService {
     }
 
     private Conta buscarContaPorNumero(Integer numero) {
-        return contas
-                .stream()
-                .filter(c -> c.getNumero() == numero)
-                .findFirst()
-                .orElseThrow(() -> new RegraDeNegocioException("Não existe conta cadastrada com esse número!"));
+        Connection conn = connection.recuperaConexao();
+        Conta conta = new ContaDAO(conn).listarPorNumero(numero);
+        if (conta != null){
+            return conta;
+        }else {
+            throw new RegraDeNegocioException("Não existe conta cadastrada com o número: "+numero);
+        }
     }
 }
