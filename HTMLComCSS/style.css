@@ -1,50 +1,124 @@
-#banner {
-  width: 100%;
+header {
+  background: #dbdbdb;
+  padding: 20px 0 0;
 }
 
-.principal {
-  background: #cccccc;
-  padding: 30px;
-}
-.titulo_principal {
-  padding-left: 20px;
-}
-.titulo_centralizado {
-  text-align: center;
+.caixa {
+  position: relative;
+  width: 940px;
+  margin: 0 auto;
 }
 
-p {
-  text-align: center;
+nav {
+  position: absolute;
+  top: 110px;
+  right: 0;
 }
 
-#missao {
-  font-size: 20px;
+nav li {
+  display: inline;
+  margin: 0 0 0 15px;
 }
 
-em strong {
-  color: #ff0000;
+nav a {
+  text-transform: uppercase;
+  color: #000;
+  font-weight: bold;
+  font-size: 22px;
+  text-decoration: none;
 }
 
-.itens {
-  font-style: italic;
+nav a:hover {
+  color: #c78c19;
+  text-decoration: underline;
 }
 
-.beneficos {
-  background: #ffffff;
-  padding: 20px;
+.produtos {
+  width: 940px;
+  margin: 0 auto;
+  padding: 50px 0;
 }
 
-h2 {
-  text-align: center;
-}
-
-ul {
+.produtos li {
   display: inline-block;
+  text-align: center;
+  width: 30%;
   vertical-align: top;
-  width: 20%;
-  margin-right: 15%;
+  margin: 0 1.5%;
+  padding: 30px 15px;
+  box-sizing: border-box;
+  /*
+  border-color: #000;
+  border-width: 2px;
+  border-style: solid;
+*/
+  border: 2px solid black;
+  border-radius: 10px;
 }
 
-.imagembeneficios {
+.produtos li:hover {
+  border-color: #c78c19;
+}
+
+.produtos li:active {
+  border-color: #088c19;
+}
+
+.produtos li:hover h2 {
+  color: #c78c19;
+  font-size: 30.5px;
+}
+
+.produtos h2 {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.produto-descricao {
+  font-size: 18px;
+}
+
+.produto-preco {
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+footer {
+  text-align: center;
+  background: url(imagens/bg.jpg);
+  padding: 40px 0;
+}
+
+.copyright {
+  color: white;
+  font-size: 13px;
+  margin-top: 20px;
+}
+
+main {
+  width: 940px;
+  margin: 0 auto;
+}
+
+form {
+  margin: 40px 0;
+}
+
+form label,
+form p {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.input-padrao {
+  display: block;
+  margin-bottom: 20px;
+  padding: 10px 25px;
   width: 50%;
+}
+
+.checkbox {
+  margin: 20px 0;
 }
