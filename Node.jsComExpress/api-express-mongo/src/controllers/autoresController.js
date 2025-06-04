@@ -1,3 +1,4 @@
+import NaoEncontrado from "../erros/NaoEncontrado.js";
 import autores from "../models/Autor.js";
 
 class AutorController {
@@ -20,7 +21,7 @@ class AutorController {
       if (autorResultado !== null) {
         res.status(200).send(autorResultado);
       } else {
-        res.status(400).send({ message: "Id do Autor não localizado." });
+        next(new NaoEncontrado("Id do Autor não localizado ^_~"));
       }
     } catch (erro) {
       next(erro);
@@ -50,7 +51,7 @@ class AutorController {
       if (autorResultado !== null) {
         res.status(200).send({ message: "Autor atualizado com sucesso" });
       } else {
-        next(new NaoEncontrado("Id do Autor não localizado."));
+        next(new NaoEncontrado("Id do Autor não localizado ^_~"));
       }
     } catch (erro) {
       next(erro);
@@ -66,7 +67,7 @@ class AutorController {
       if (autorResultado !== null) {
         res.status(200).send({ message: "Autor removido com sucesso" });
       } else {
-        next(new NaoEncontrado("Id do Autor não localizado."));
+        next(new NaoEncontrado("Id do Autor não localizado ^_~"));
       }
     } catch (erro) {
       next(erro);

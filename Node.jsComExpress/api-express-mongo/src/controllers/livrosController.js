@@ -1,3 +1,4 @@
+import NaoEncontrado from "../erros/NaoEncontrado.js";
 import livros from "../models/Livro.js";
 
 class LivroController {
@@ -23,7 +24,7 @@ class LivroController {
       if (livroResultado !== null) {
         res.status(200).send(livroResultado);
       } else {
-        next(erro);
+        next(new NaoEncontrado("Id do Livro não localizado ^_~"));
       }
     } catch (erro) {
       next(erro);
@@ -55,7 +56,7 @@ class LivroController {
       if (livroResultado !== null) {
         res.status(200).send({ message: "Livro atualizado com sucesso" });
       } else {
-        next(new NaoEncontrado("Id do livro não localizado."));
+        next(new NaoEncontrado("Id do Livro não localizado ^_~"));
       }
     } catch (erro) {
       next(erro);
@@ -73,7 +74,7 @@ class LivroController {
       if (livroResultado !== null) {
         res.status(200).send({ message: "Livro removido com sucesso" });
       } else {
-        next(new NaoEncontrado("Id do livro não localizado."));
+        next(new NaoEncontrado("Id do Livro não localizado ^_~"));
       }
     } catch (erro) {
       next(erro);
