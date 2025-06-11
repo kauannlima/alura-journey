@@ -4,9 +4,11 @@ import { autores, livros } from "../models/index.js";
 class LivroController {
   static listarLivros = async (req, res, next) => {
     try {
-      const livrosResultado = await livros.find().populate("autor").exec();
+      const buscaLivros = livros.find();
 
-      res.status(200).json(livrosResultado);
+      req.resultado = buscaLivros;
+
+      next();
     } catch (erro) {
       next(erro);
     }
@@ -85,8 +87,6 @@ class LivroController {
     try {
       const { editora, titulo, minPaginas, maxPaginas, nomeAutor } = req.query;
 
-      //const regex = new RegExp(titulo, "i");
-
       let busca = {};
 
       if (editora) busca.editora = editora;
@@ -108,9 +108,13 @@ class LivroController {
       }
 
       if (busca !== null) {
-        const livrosResultado = await livros.find(busca).populate("autor");
+        const livrosResultado = livros.find(busca).populate("autor");
 
-        res.status(200).send(livrosResultado);
+        req.resultado = livrosResultado;
+
+        console.log("TESTE");
+
+        next();
       } else {
         res.status(200).send([]);
       }
